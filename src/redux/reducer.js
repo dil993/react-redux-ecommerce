@@ -1,10 +1,11 @@
 import { ADD_TO_CART } from './actionConstants';
 
 export const cartData = (data=[], action) => {
-    console.log("2....", action)
-    if(action.type === ADD_TO_CART) {
-        console.log("3....", action.data)
-        return action.data;
+    switch(action.type) {
+        case ADD_TO_CART:
+            console.log("Add to cart condition...", action);
+            return [action.data,...data];
+        default:
+            return data;
     }
-    return "1 item added to cart";
 }
